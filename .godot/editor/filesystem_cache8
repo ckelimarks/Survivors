@@ -5,7 +5,7 @@ icon.png::CompressedTexture2D::6197472791120394448::1704855677::1705262008::1:::
 ::res://scenes/::1705203473
 Enemy.tscn::PackedScene::-1::1705203423::0::1::::<><>::res://scripts/Enemy.gd<>res://sprites/Enemy1_Dead.png<>res://sprites/Enemy1_Walk.png
 Hero.tscn::PackedScene::-1::1705202369::0::1::::<><>::res://scripts/Hero.gd<>res://sprites/hero.png
-Survivor.tscn::PackedScene::-1::1705203381::0::1::::<><>::res://scripts/Camera.gd<>res://shaders/Ground.tres<>res://scripts/Ground.gd<>res://scripts/Main.gd
+Survivors.tscn::PackedScene::-1::1705203381::0::1::::<><>::res://scripts/Camera.gd<>res://shaders/Ground.tres<>res://scripts/Ground.gd<>res://scripts/Main.gd
 ::res://scripts/::1704932506
 Camera.gd::GDScript::-1::1705070821::0::1::::<>Camera2D<>::
 Enemy.gd::GDScript::-1::1705191777::0::1::::<>KinematicBody2D<>::
