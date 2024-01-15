@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var speed = 75  # Adjust as needed
 var pushing_strength = 10
+var HP = 100 # hit points
 onready var camera_node = get_node("/root/Main/Camera")
 onready var sprite_node = $AnimatedSprite
 onready var killsound = $AudioStreamPlayer2D
@@ -25,12 +26,12 @@ func _physics_process(delta):
 	if collision:
 		
 		if true or collision.collider.is_in_group("pushable"):  # Check if the collider can be pushed
-			#HP - DPS 
-			#if HP <= 0
-			killsound.play()
-			speed = 0
-			sprite_node.play("Dead")
-			#release gem
+			if collision.collider == Hero:
+				HP -= Hero.DPS
+				if HP <= 0:
+					killsound.play()
+					speed = 0
+					sprite_node.play("Dead")
 			
 			# Attempt to push the collider by manually adjusting the hero's global_position
 			var push_vector = collision.remainder.normalized() * pushing_strength * delta

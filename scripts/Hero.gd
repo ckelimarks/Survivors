@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var speed = 200
 var pushing_strength = 300  # Adjust the pushing effect as needed
+var DPS = 1 # dmamage per second
 onready var sprite_node = $Sprite
 onready var camera_node = get_node("/root/Main/Camera")
 var sprite_offset = Vector2()
