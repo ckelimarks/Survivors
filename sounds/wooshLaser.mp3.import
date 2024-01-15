@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wooshLaser.mp3-add7a554693094fafb04ec9cddf236b1.mp3str"
+
+[deps]
+
+source_file="res://sounds/wooshLaser.mp3"
+dest_files=[ "res://.import/wooshLaser.mp3-add7a554693094fafb04ec9cddf236b1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,31 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D ground_texture;
+uniform vec2 camera_pos; // Uniform for the camera position
+uniform vec2 window_size; // The size of the window
+//uniform vec2 hero_pos; // Uniform for the character position
+uniform vec2 texture_size; // The actual pixel size of the texture
+
+void fragment() {
+	// Convert camera position to UV offset
+	vec2 uv_offset = -camera_pos / texture_size;
+
+	// Apply additional offset based on half the window size
+	vec2 window_offset = (window_size * 0.5) / texture_size * vec2(1.0, -1.0);
+	uv_offset += window_offset;
+
+	// Calculate the UV coordinates offset by the camera position
+	vec2 frag = FRAGCOORD.xy;
+	frag.y = -frag.y;
+	vec2 uv = (frag / texture_size) - uv_offset;
+
+	// Tile the texture
+	COLOR = texture(ground_texture, mod(uv, 1.0));
+	// Fade out with distance from the center
+	//float dist = distance(uv * vec2(1.1, 1.1), vec2(0.0, 0.0));
+	//COLOR *= vec4(1.0, 1.0, 1.0, 1.0 - 0.75 * pow(dist, 0.5));
+}
+"
