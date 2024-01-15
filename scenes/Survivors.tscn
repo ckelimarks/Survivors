@@ -1,34 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sounds/music.mp3" type="AudioStream" id=1]
-[ext_resource path="res://sprites/ruindome.png" type="Texture" id=2]
+[ext_resource path="res://scripts/EcologyManager.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=3]
 [ext_resource path="res://shaders/Ground.tres" type="Material" id=4]
 [ext_resource path="res://scripts/Ground.gd" type="Script" id=5]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=6]
-[ext_resource path="res://sprites/ruinedgrave.png" type="Texture" id=7]
-[ext_resource path="res://sprites/ruinedarch.png" type="Texture" id=8]
-[ext_resource path="res://sprites/ruinedpillar.png" type="Texture" id=9]
 
 [sub_resource type="QuadMesh" id=4]
 size = Vector2( 1024, 600 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 118.25, 116.5 )
 
 [node name="Main" type="Node2D"]
 z_index = -1
 z_as_relative = false
 script = ExtResource( 6 )
-
-[node name="Ruinedarch" type="Sprite" parent="."]
-position = Vector2( 386, -188 )
-scale = Vector2( 0.772222, 0.772222 )
-texture = ExtResource( 8 )
-
-[node name="Ruinedpillar" type="Sprite" parent="Ruinedarch"]
-position = Vector2( -606.043, -142.446 )
-texture = ExtResource( 9 )
 
 [node name="Camera" type="Camera2D" parent="."]
 z_as_relative = false
@@ -51,26 +36,5 @@ script = ExtResource( 5 )
 stream = ExtResource( 1 )
 volume_db = -5.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( -294, -27 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -126.5, 106.5 )
-shape = SubResource( 5 )
-
-[node name="Ruindome" type="Sprite" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2( 4.5, -3 )
-scale = Vector2( 0.530556, 0.530556 )
-texture = ExtResource( 2 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( 84, 170 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 299.25, 33 )
-shape = SubResource( 5 )
-
-[node name="Ruinedgrave" type="Sprite" parent="StaticBody2D2/CollisionShape2D"]
-position = Vector2( -4.99988, 7.00003 )
-scale = Vector2( 0.430556, 0.426389 )
-texture = ExtResource( 7 )
+[node name="Ecology" type="Node2D" parent="."]
+script = ExtResource( 2 )
