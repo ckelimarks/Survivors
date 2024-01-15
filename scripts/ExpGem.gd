@@ -1,5 +1,11 @@
 extends Area2D
 
+var audio_samples := [
+	preload("res://sounds/gemsounds/gemsound1.mp3"),
+	preload("res://sounds/gemsounds/gemsound2.mp3"),
+	# ... add more audio samples as needed
+]
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -7,16 +13,18 @@ extends Area2D
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	
+	
 func _on_body_entered(body):
 	#print(body)
 	if body == Hero:
 	#if body.is_in_group("player"):
-		print("entered")
-		# Player picked up the experience gem
-		#queue_free()  # Destroy the experience gem
-		# Call your function to play the random audio
-		pass
-		#get_parent().on_experience_gem_pickup()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		#print("entered")
+		var random_note_index = randi() % audio_samples.size()
+		$AudioStreamPlayer.set_stream(audio_samples[random_note_index])
+		$AudioStreamPlayer.play()
+		$AudioStreamPlayer.connect("finished", self, "_on_Audio_finished")
+		#print($AudioStreamPlayer.stream)
+		
+		
+func _on_Audio_finished():
+	print("hey")	
