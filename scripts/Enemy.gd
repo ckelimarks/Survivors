@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var speed = 75  # Adjust as needed
 var pushing_strength = 10
-var HP = 100 # hit points
+var HP = 1 # hit points
 onready var camera_node = get_node("/root/Main/Camera")
 onready var sprite_node = $AnimatedSprite
 onready var killsound = $AudioStreamPlayer2D

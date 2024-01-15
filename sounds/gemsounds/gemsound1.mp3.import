@@ -11,5 +11,5 @@ dest_files=[ "res://.import/gemsound1.mp3-2aebf2b564600dca4cfe09aea59d3e39.mp3st
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

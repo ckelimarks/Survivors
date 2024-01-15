@@ -6,25 +6,16 @@ var audio_samples := [
 	# ... add more audio samples as needed
 ]
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	
-	
 func _on_body_entered(body):
-	#print(body)
 	if body == Hero:
-	#if body.is_in_group("player"):
-		#print("entered")
 		var random_note_index = randi() % audio_samples.size()
+		$Sprite.visible = false
 		$AudioStreamPlayer.set_stream(audio_samples[random_note_index])
 		$AudioStreamPlayer.play()
-		$AudioStreamPlayer.connect("finished", self, "_on_Audio_finished")
-		#print($AudioStreamPlayer.stream)
+		$AudioStreamPlayer.connect("finished", self, "_on_audio_finished")
 		
-		
-func _on_Audio_finished():
-	print("hey")	
+func _on_audio_finished():
+	queue_free()
