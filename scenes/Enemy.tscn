@@ -107,7 +107,7 @@ shape = SubResource( 18 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
 animation = "Walk"
-frame = 6
+frame = 7
 playing = true
 offset = Vector2( 0, -58 )
 
