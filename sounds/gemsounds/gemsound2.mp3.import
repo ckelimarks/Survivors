@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gemsound2.mp3-03a0eec18c91cac1c6e4055b71b3e35c.mp3str"
+
+[deps]
+
+source_file="res://sounds/gemsounds/gemsound2.mp3"
+dest_files=[ "res://.import/gemsound2.mp3-03a0eec18c91cac1c6e4055b71b3e35c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
