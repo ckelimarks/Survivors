@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruinedstargate.png-f43919e89b7ae2d94a5c5470e80f2d4b.stex"
+path="res://.import/ruins014.png-4f25b92c652dd905f81cc9c9c51bf49e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ruins/ruinedstargate.png"
-dest_files=[ "res://.import/ruinedstargate.png-f43919e89b7ae2d94a5c5470e80f2d4b.stex" ]
+source_file="res://sprites/ruins/ruins014.png"
+dest_files=[ "res://.import/ruins014.png-4f25b92c652dd905f81cc9c9c51bf49e.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruindome.png-e18f2023e2e314ace6a7b6792078c25f.stex"
+path="res://.import/ruins015.png-8cd9af09f33116f46a1db9f14591ec02.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ruindome.png"
-dest_files=[ "res://.import/ruindome.png-e18f2023e2e314ace6a7b6792078c25f.stex" ]
+source_file="res://sprites/ruins/ruins015.png"
+dest_files=[ "res://.import/ruins015.png-8cd9af09f33116f46a1db9f14591ec02.stex" ]
 
 [params]
 

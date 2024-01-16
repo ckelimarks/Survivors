@@ -1,5 +1,0 @@
-ancienttelescope.png
-ruinedcolumn.png
-ruinedcomplex.png
-ruinedmegaarch.png
-ruinedstargate.png

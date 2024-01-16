@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruinedcolumn.png-80b0a57fffba8e5e22581658c8cba963.stex"
+path="res://.import/ruins005.png-37a306986df0c8fd60ce230256cd47c7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ruins/ruinedcolumn.png"
-dest_files=[ "res://.import/ruinedcolumn.png-80b0a57fffba8e5e22581658c8cba963.stex" ]
+source_file="res://sprites/ruins/ruins005.png"
+dest_files=[ "res://.import/ruins005.png-37a306986df0c8fd60ce230256cd47c7.stex" ]
 
 [params]
 

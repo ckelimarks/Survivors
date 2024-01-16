@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruinedmegaarch.png-f4966d826c9f0c7034a327c7cf9a58f3.stex"
+path="res://.import/ruins017.png-f1e29e31f1476007d5746ad311b1961f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ruins/ruinedmegaarch.png"
-dest_files=[ "res://.import/ruinedmegaarch.png-f4966d826c9f0c7034a327c7cf9a58f3.stex" ]
+source_file="res://sprites/ruins/ruins017.png"
+dest_files=[ "res://.import/ruins017.png-f1e29e31f1476007d5746ad311b1961f.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ruinedgrave.png-2c42308788aeab5f9e41889b63421a44.stex"
+path="res://.import/ruins007.png-df1faed3b2ad0c3bf034a5d7d24c8fd6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ruinedgrave.png"
-dest_files=[ "res://.import/ruinedgrave.png-2c42308788aeab5f9e41889b63421a44.stex" ]
+source_file="res://sprites/ruins/ruins007.png"
+dest_files=[ "res://.import/ruins007.png-df1faed3b2ad0c3bf034a5d7d24c8fd6.stex" ]
 
 [params]
 
