@@ -5,7 +5,7 @@
 [ext_resource path="res://sounds/gemsounds/gemsound1.mp3" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 17, 24.5 )
+extents = Vector2( 11, 14.5 )
 
 [node name="ExperienceGem" type="Area2D"]
 script = ExtResource( 2 )
@@ -21,5 +21,6 @@ shape = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -12.0
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_Audio_finished"]

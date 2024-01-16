@@ -1,8 +1,10 @@
 extends Area2D
 
 var audio_samples := [
-	preload("res://sounds/gemsounds/gemsound1.mp3"),
-	preload("res://sounds/gemsounds/gemsound2.mp3"),
+	preload("res://sounds/gemsounds/v2/gemsound1.mp3"),
+	preload("res://sounds/gemsounds/v2/gemsound2.mp3"),
+	preload("res://sounds/gemsounds/v2/gemsound3.mp3"),
+	preload("res://sounds/gemsounds/v2/gemsound4.mp3"),
 	# ... add more audio samples as needed
 ]
 

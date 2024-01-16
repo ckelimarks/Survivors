@@ -109,6 +109,7 @@ shape = SubResource( 34 )
 position = Vector2( -1, -10 )
 frames = SubResource( 17 )
 animation = "Walk"
+frame = 7
 playing = true
 offset = Vector2( 0, -58 )
 

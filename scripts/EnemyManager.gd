@@ -1,7 +1,7 @@
 extends Node2D
 
 var enemy_scene = preload("res://scenes/Enemy.tscn")
-var max_enemies = 20
+var max_enemies = 200
 var enemies = []
 
 func initialize():
