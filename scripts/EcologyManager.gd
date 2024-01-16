@@ -5,8 +5,11 @@ onready var camera_node = get_node("/root/Main/Camera")
 
 # Preload the ruin scenes for later instantiation
 var ruin_scenes = [
-	preload("res://scenes/ruins/Ruins0.tscn"),
-	preload("res://scenes/ruins/Ruins1.tscn")
+	preload("res://scenes/ruins/ancienttelescope.tscn"),
+	preload("res://scenes/ruins/ruinedcolumn.tscn"),
+	preload("res://scenes/ruins/ruinedcomplex.tscn"),
+	preload("res://scenes/ruins/ruinedmegaarch.tscn"),
+	preload("res://scenes/ruins/ruinedstargate.tscn")
 ]
 
 # Array to store ruin objects
