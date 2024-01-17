@@ -1,16 +1,16 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://sprites/ruins/ruins017.png" type="Texture" id=1]
+[ext_resource path="res://sprites/ruins/ruins0006.png" type="Texture" id=1]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 position = Vector2( -1, 1 )
 z_as_relative = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -191.377, 198.454 )
-scale = Vector2( 15.4702, 5.83449 )
-polygon = PoolVector2Array( 22.8424, -41.898, 16.1198, -44.8117, -1.91482, -32.9855, 4.05714, -30 )
+position = Vector2( -96, 334 )
+scale = Vector2( 12.9508, 9.2832 )
+polygon = PoolVector2Array( 30.3457, -36.3021, 14.9026, -45.6739, -9.65194, -35.979, 3.86186, -27.28 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 22, -169 )
+position = Vector2( 11, -166 )
 texture = ExtResource( 1 )
