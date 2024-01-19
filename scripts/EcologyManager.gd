@@ -5,8 +5,20 @@ onready var camera_node = get_node("/root/Main/Camera")
 
 # Preload the ruin scenes for later instantiation
 var ruin_scenes = [
-	preload("res://scenes/ruins/Ruins0.tscn"),
-	preload("res://scenes/ruins/Ruins1.tscn")
+	preload("res://scenes/ruins/ruins005.tscn"),
+	preload("res://scenes/ruins/ruins006.tscn"),
+	preload("res://scenes/ruins/ruins007.tscn"),
+	preload("res://scenes/ruins/ruins008.tscn"),
+	preload("res://scenes/ruins/ruins009.tscn"),
+	preload("res://scenes/ruins/ruins010.tscn"),
+	#preload("res://scenes/ruins/ruins011.tscn"),
+	preload("res://scenes/ruins/ruins012.tscn"),
+	#preload("res://scenes/ruins/ruins013.tscn"),
+	preload("res://scenes/ruins/ruins014.tscn"),
+	#preload("res://scenes/ruins/ruins015.tscn"),
+	preload("res://scenes/ruins/ruins016.tscn"),
+	preload("res://scenes/ruins/ruins017.tscn"),
+	#preload("res://scenes/ruins/ruins018.tscn")
 ]
 
 # Array to store ruin objects
@@ -14,7 +26,7 @@ var ruins = []
 
 func _ready():
 	# Create 1000 ruin objects with random positions and types
-	for r in range(1000):
+	for r in range(500):
 		var ruin_object = {
 			"position": Vector2(rand_range(-10000, 10000), rand_range(-10000, 10000)),
 			"type": randi() % ruin_scenes.size(),
