@@ -96,13 +96,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Gradient" id=35]
+[sub_resource type="Gradient" id=37]
 interpolation_mode = 2
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture2D" id=36]
 flags = 0
-gradient = SubResource( 35 )
+gradient = SubResource( 37 )
 fill = 1
 fill_from = Vector2( 0.5, 0.5 )
 fill_to = Vector2( 0.75, 0.75 )
@@ -120,7 +120,7 @@ shape = SubResource( 34 )
 position = Vector2( -1, -10 )
 frames = SubResource( 17 )
 animation = "Walk"
-frame = 2
+frame = 6
 playing = true
 offset = Vector2( 0, -58 )
 
