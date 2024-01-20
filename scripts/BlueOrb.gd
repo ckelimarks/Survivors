@@ -16,12 +16,12 @@ var knock_amount = 100
 var attack_size = 1.0
 
 func _ready():
-	#randomize()
-	#velocity.x = [-1, 1][randi() % 2]
-	#velocity.y = [-0.8, 0.8][randi() % 2]
+	randomize()
+	velocity.x = [-1, 1][randi() % 2]
+	velocity.y = [-0.8, 0.8][randi() % 2]
 	
-	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg2rad(135)
+	#angle = global_position.direction_to(target)
+	#rotation = angle.angle() + deg2rad(135)
 	match level:
 		1:
 			hp = 1
@@ -35,16 +35,17 @@ func _ready():
 
 func _physics_process(delta):
 	
-	position += angle*speed*delta
+	#position += angle*speed*delta
 	
 	var collision_info = move_and_collide(velocity * speed * delta)
-	#global_position += velocity
+	global_position += velocity
 	
 	if collision_info:
 		velocity = velocity.bounce(collision_info.normal)
 		
 		# Check if the collision is with the enemy or player paddle
-		#if collision_info.collider.name == "Enemy" or collision_info.collider.name == "Player":
+		#if collision_info.collider.name == "Enemy" or collision_info.collider.name == "Hero":
+			#print("enemy")
 			# Reverse the rotation direction
 			#rotation_direction *= -1
 			#get_node("/root/Level/CollisionSound").play()

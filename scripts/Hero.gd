@@ -16,7 +16,7 @@ onready var blueOrbAttackTimer = get_node("%BlueOrbAttackTimer")
 #export (PackedScene) var BlueOrb
 #onready var orb_origin = $OrbOrigin
 var blueOrb = preload("res://scenes/weapons/BlueOrb.tscn")
-var blueOrb_attackspeed = 1.5
+var blueOrb_attackspeed = 1
 var blueOrb_ammo = 0
 var blueOrb_baseammo = 1
 var blueOrb_level = 1
