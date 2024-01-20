@@ -36,7 +36,7 @@ modulate = Color( 1, 1, 1, 0.627451 )
 position = Vector2( -1, -9.53674e-07 )
 scale = Vector2( 0.228516, 0.225053 )
 frames = SubResource( 48 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
