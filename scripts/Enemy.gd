@@ -9,7 +9,7 @@ onready var camera_node = get_node("/root/Main/Camera")
 onready var sprite_node = $AnimatedSprite
 onready var glow_sprite = sprite_node.get_node("Sprite")
 onready var killsound = $AudioStreamPlayer2D
-onready var weapon_node = Hero.get_node("Weapons")
+onready var weapon_node = Hero.get_node("Weapon1")
 
 func _ready():
 	sprite_node.connect("animation_finished", self, "_on_animation_finished")
@@ -33,7 +33,7 @@ func _physics_process(delta):
 	if collision:
 		if true or collision.collider.is_in_group("pushable"):  # Check if the collider can be pushed
 			if collision.collider == weapon_node: 
-				HP -= weapon_node.attack
+				HP -= weapon_node.power
 				recoil = (Hero.global_position - global_position).normalized() * 100
 				glow()
 				if HP <= 0:

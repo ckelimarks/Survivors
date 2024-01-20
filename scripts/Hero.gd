@@ -4,8 +4,8 @@ var speed = 200
 var pushing_strength = 300  # Adjust the pushing effect as needed
 
 onready var sprite_node = $Sprite
+onready var weapon_node = $Weapon1
 onready var camera_node = get_node("/root/Main/Camera")
-onready var weapon_node = get_node("/root/Main/Weapons/Weapon1")
 
 var sprite_offset = Vector2()
 
@@ -33,23 +33,15 @@ func _physics_process(delta):
 
 	# Move the player
 	# First, try to move normally.
-	var collision_test = move_and_collide(velocity.normalized() * speed * delta, true, true, true)
+	var collision = move_and_collide(velocity.normalized() * speed * delta)
+	if collision:
+		if true or collision.collider.is_in_group("pushable"):  # Check if the collider can be pushed
+			# Attempt to push the collider by manually adjusting the hero's global_position
+			var push_vector = collision.remainder.normalized() * pushing_strength * delta
+			var new_position = global_position + push_vector
+			var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position + sprite_offset, 0.1)
+			global_position = new_position
+			sprite_node.position = smoothed_position - new_position
 	
-	#if collision_test.collider == weapon_node:
-		#print(collision_test)
-	if true: #collision_test.collider != weapon_node:
-		
-	
-		var collision = move_and_collide(velocity.normalized() * speed * delta)
-
-		if collision:
-			if true or collision.collider.is_in_group("pushable"):  # Check if the collider can be pushed
-				# Attempt to push the collider by manually adjusting the hero's global_position
-				var push_vector = collision.remainder.normalized() * pushing_strength * delta
-				var new_position = global_position + push_vector
-				var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position + sprite_offset, 0.1)
-				global_position = new_position
-				sprite_node.position = smoothed_position - new_position
-		
-		self.z_index = int(global_position.y - camera_node.global_position.y)
-		#print(self.z_index)
+	self.z_index = int(global_position.y - camera_node.global_position.y)
+	#print(self.z_index)
