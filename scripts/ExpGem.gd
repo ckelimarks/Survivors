@@ -24,6 +24,7 @@ func _on_body_entered(body):
 		xpBar.value = xpBar.value + 10
 	if xpBar.value == 100:
 		levelUp.show()
+		#get_tree().paused = true
 		
 		
 func _on_audio_finished():

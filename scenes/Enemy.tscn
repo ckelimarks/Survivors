@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Enemy1_Walk.png" type="Texture" id=2]
-[ext_resource path="res://sounds/wooshLaser.mp3" type="AudioStream" id=3]
+[ext_resource path="res://sounds/killsound2.mp3" type="AudioStream" id=3]
 [ext_resource path="res://sprites/Enemy1_Dead.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=34]
@@ -122,7 +122,7 @@ shape = SubResource( 34 )
 position = Vector2( -1, -10 )
 frames = SubResource( 17 )
 animation = "Walk"
-frame = 2
+frame = 3
 playing = true
 offset = Vector2( 0, -58 )
 
