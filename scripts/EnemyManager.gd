@@ -29,9 +29,14 @@ func spawn_enemy(view):
 
 	# Keep track of the enemy instance
 	enemies.append(enemy_instance)
+	
+	for enemy in enemies:
+		pass
+		#print(enemy.distance_to_hero)
+		
 
 func _process(delta):
 	# Define the maximum view rectangle considering the camera's position
 	var view_rect = Rect2(camera_node.global_position, get_viewport_rect().size)
-	if active_enemies < max_enemies && randf() < 5e-3:
+	if active_enemies < max_enemies && randf() < .1: #5e-3:
 		spawn_enemy(view_rect)
