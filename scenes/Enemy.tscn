@@ -122,11 +122,7 @@ shape = SubResource( 34 )
 position = Vector2( -1, -10 )
 frames = SubResource( 17 )
 animation = "Walk"
-<<<<<<< Updated upstream
 frame = 2
-=======
-frame = 6
->>>>>>> Stashed changes
 playing = true
 offset = Vector2( 0, -58 )
 
