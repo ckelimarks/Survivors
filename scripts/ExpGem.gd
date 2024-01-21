@@ -8,8 +8,8 @@ var audio_samples := [
 	# ... add more audio samples as needed
 ]
 
-onready var xpBar = get_node("/root/Main/UICanvas/UI/xpBar")
-onready var levelUp = get_node("/root/Main/UICanvas/UI/LevelUpMenu")
+onready var xpBar = get_node("/root/Main/UICanvas/xpBar")
+onready var levelUp = get_node("/root/Main/UICanvas/MarginContainer")
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
@@ -24,7 +24,7 @@ func _on_body_entered(body):
 		xpBar.value = xpBar.value + 10
 	if xpBar.value == 100:
 		levelUp.show()
-		#get_tree().paused = true
+		get_tree().paused = true
 		
 		
 func _on_audio_finished():
