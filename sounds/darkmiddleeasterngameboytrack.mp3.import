@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/darkmiddleeasterngameboytrack.mp3-b8baee891357d73a4815d0df9a8f2e2f.mp3str"
+
+[deps]
+
+source_file="res://sounds/darkmiddleeasterngameboytrack.mp3"
+dest_files=[ "res://.import/darkmiddleeasterngameboytrack.mp3-b8baee891357d73a4815d0df9a8f2e2f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
