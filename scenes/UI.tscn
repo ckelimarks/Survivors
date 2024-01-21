@@ -1,0 +1,41 @@
+[gd_scene format=2]
+
+[node name="UICanvas" type="CanvasLayer"]
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="xpBar" type="ProgressBar" parent="UI"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 1015.0
+margin_bottom = 23.0
+
+[node name="LevelUpMenu" type="PopupPanel" parent="UI"]
+visible = true
+modulate = Color( 1, 1, 1, 0.65098 )
+margin_left = 197.0
+margin_top = 93.0
+margin_right = 802.0
+margin_bottom = 432.0
+
+[node name="LevelupMessage" type="Label" parent="UI/LevelUpMenu"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 601.0
+margin_bottom = 335.0
+text = "YOU'VE LEVELED UP!"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="UI/LevelUpMenu"]
+visible = false
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 601.0
+margin_bottom = 335.0
+text = "DONE"
+
+[connection signal="button_down" from="UI/LevelUpMenu/Button" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="UI/LevelUpMenu/Button" to="." method="_on_Button_pressed"]

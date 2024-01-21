@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/chakrasound.mp3-b76a7b8ad04963e2a8ab38e4f98ec44b.mp3str"
+
+[deps]
+
+source_file="res://sounds/chakrasound.mp3"
+dest_files=[ "res://.import/chakrasound.mp3-b76a7b8ad04963e2a8ab38e4f98ec44b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
