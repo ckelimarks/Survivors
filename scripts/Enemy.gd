@@ -10,6 +10,7 @@ onready var sprite_node = $AnimatedSprite
 onready var glow_sprite = sprite_node.get_node("Sprite")
 onready var killsound = $AudioStreamPlayer2D
 onready var weapon_node = Hero.get_node("Weapon1")
+#onready var weapon_node2 = Hero.get_node("/root/Main/Hero/BlueOrb")
 
 func _ready():
 	sprite_node.connect("animation_finished", self, "_on_animation_finished")
