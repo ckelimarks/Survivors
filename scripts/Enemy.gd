@@ -23,11 +23,13 @@ func _physics_process(delta):
 	var direction = (gap_vector).normalized()
 	var start_position = global_position
 	var sprite_start_position = sprite_node.position  # Save the current position before moving
-	sprite_node.flip_h = gap_vector.x < 0
+	
+	if HP > 0:
+		sprite_node.flip_h = gap_vector.x < 0
 	
 	#scale.x = abs(sprite_node.scale.x) * sign(gap_vector.x)	
 	
-	# First, try to move normally.
+	# First, try to move normally.	
 	var push_vector = Vector2(0,0)
 	var recoil = Vector2(0,0)
 	var collision = move_and_collide(direction * speed * delta)
@@ -44,8 +46,14 @@ func _physics_process(delta):
 					killsound.play()
 					speed = 0
 					sprite_node.play("Dead")
+					# remove from collision layers
+					set_collision_layer_bit(0, false)
+					set_collision_mask_bit(0, false)
+					#set_collision_layer_bit(1, false)
+					#set_collision_mask_bit(1, false)
+
 				
-			# Attempt to push the collider by manually adjusting the hero's global_position
+			# Attempt to push the collider by manually adjusting the enemy's global_position
 			push_vector = collision.remainder.normalized() * pushing_strength * delta
 	
 	var new_position = global_position + push_vector - recoil
