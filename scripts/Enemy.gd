@@ -27,8 +27,6 @@ func _physics_process(delta):
 	if HP > 0:
 		sprite_node.flip_h = gap_vector.x < 0
 	
-	#scale.x = abs(sprite_node.scale.x) * sign(gap_vector.x)	
-	
 	# First, try to move normally.	
 	var push_vector = Vector2(0,0)
 	var recoil = Vector2(0,0)
@@ -49,8 +47,10 @@ func _physics_process(delta):
 					# remove from collision layers
 					set_collision_layer_bit(0, false)
 					set_collision_mask_bit(0, false)
-					#set_collision_layer_bit(1, false)
-					#set_collision_mask_bit(1, false)
+					set_collision_layer_bit(1, false)
+					set_collision_mask_bit(1, false)
+					set_collision_layer_bit(2, false)
+					set_collision_mask_bit(2, false)
 
 				
 			# Attempt to push the collider by manually adjusting the enemy's global_position

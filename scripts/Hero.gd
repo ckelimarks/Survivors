@@ -35,8 +35,6 @@ func _physics_process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed('ui_up'):
 		velocity.y -= 1
-	#if Input.is_action_pressed('ui_accept'):	
-		#shoot()
 
 	# Move the player
 	# First, try to move normally.
@@ -51,5 +49,4 @@ func _physics_process(delta):
 			sprite_node.position = smoothed_position - new_position
 	
 	self.z_index = int(global_position.y - camera_node.global_position.y)
-	#print(self.z_index)
 	
