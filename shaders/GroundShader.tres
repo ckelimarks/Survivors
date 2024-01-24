@@ -8,7 +8,7 @@ uniform vec2 camera_pos; // Uniform for the camera position
 uniform vec2 window_size; // The size of the window
 //uniform vec2 hero_pos; // Uniform for the character position
 uniform vec2 texture_size; // The actual pixel size of the texture
-const bool isometricify = true; // 'true' to make topdown textures isometric
+const bool isometricify = false; // 'true' to make topdown textures isometric
 
 void fragment() {
 	// Convert camera position to UV offset

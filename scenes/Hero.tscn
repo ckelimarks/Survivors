@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Hero.gd" type="Script" id=1]
 [ext_resource path="res://sprites/character4.5.png" type="Texture" id=2]
@@ -6,9 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 44, 17 )
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 954.231
 
 [node name="HeroBody" type="KinematicBody2D"]
 z_as_relative = false
@@ -43,15 +40,5 @@ wait_time = 1.5
 unique_name_in_owner = true
 wait_time = 0.075
 
-[node name="EnemyDetection" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection"]
-shape = SubResource( 2 )
-
 [connection signal="timeout" from="OrbOrigin/BlueOrbTimer" to="." method="_on_BlueOrbTimer_timeout"]
 [connection signal="timeout" from="OrbOrigin/BlueOrbTimer/BlueOrbAttackTimer" to="." method="_on_BlueOrbAttackTimer_timeout"]
-[connection signal="body_entered" from="EnemyDetection" to="." method="_on_EnemyDetection_body_entered"]
-[connection signal="body_exited" from="EnemyDetection" to="." method="_on_EnemyDetection_body_exited"]
