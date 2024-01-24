@@ -38,5 +38,5 @@ func spawn_enemy(view):
 func _process(delta):
 	# Define the maximum view rectangle considering the camera's position
 	var view_rect = Rect2(camera_node.global_position, get_viewport_rect().size)
-	if active_enemies < max_enemies && randf() < .1: #5e-3:
+	if active_enemies < max_enemies && randf() < .9e-2:
 		spawn_enemy(view_rect)

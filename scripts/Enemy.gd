@@ -44,6 +44,7 @@ func _physics_process(delta):
 					killsound.play()
 					speed = 0
 					sprite_node.play("Dead")
+					sprite_node.offset = Vector2(19, -88)
 					# remove from collision layers
 					set_collision_layer_bit(0, false)
 					set_collision_mask_bit(0, false)
@@ -77,5 +78,10 @@ func _on_animation_finished():
 		self.queue_free()
 		var gem_instance = exp_gem_scene.instance()
 		gem_instance.global_position = global_position
+		print(sign(sprite_node.scale.x))
+		var flip = 1
+		if sprite_node.flip_h:
+			flip = -1
+		gem_instance.global_position += Vector2(40 * flip, 60)
 		EnemyManager.add_child(gem_instance)
 		#respawn enemey somewhere else
