@@ -1,6 +1,7 @@
 extends Node2D
 
 	
+	
 func _ready():
 	print($WeaponManager.weapons)
 	
@@ -20,6 +21,6 @@ func reset():
 	
 	# reset/respawn Hero
 	Hero.HP = Hero.max_HP
-	Hero.get_node("HeroHealth").value = 100
-	Hero.get_node("Sprite").position = Hero.sprite_offset
+	Hero.get_node("Smoother/HealthNode/HeroHealth").value = 100
+	Hero.get_node("Smoother").position = Hero.sprite_offset
 	Hero.global_position = Vector2.ZERO
