@@ -3,8 +3,6 @@ extends Node2D
 	
 	
 func _ready():
-	print($WeaponManager.weapons)
-	
 	pass
 
 func reset():

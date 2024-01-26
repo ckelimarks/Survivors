@@ -2,25 +2,15 @@ extends Node2D
 
 var cooldown = 1
 var heat = 0
-var cooldown = 1
-var heat = 0
 
 onready var weapon_nodes = get_node("/root/Main/WeaponManager").weapons
 var blue_orb = preload("res://scenes/weapons/BlueOrb.tscn")
-#var active_orbs = []
-#var active_orbs = []
 
 func _ready():
 	pass
 	#spawn_orb()
-	pass
-	#spawn_orb()
 
 func _physics_process(delta):
-	heat -= delta
-	if heat < 0:
-		spawn_orb()
-		heat = cooldown
 	heat -= delta
 	if heat < 0:
 		spawn_orb()

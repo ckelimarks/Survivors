@@ -105,7 +105,6 @@ fill_from = Vector2( 0.5, 0.5 )
 fill_to = Vector2( 0.75, 0.75 )
 
 [node name="EnemyBody" type="KinematicBody2D" groups=["enemies"]]
-[node name="EnemyBody" type="KinematicBody2D" groups=["enemies"]]
 z_index = 2
 z_as_relative = false
 collision_layer = 3
@@ -121,7 +120,6 @@ polygon = PoolVector2Array( -45, -3.003, 0, -45.045, 46, -3.003, 1, 42.042 )
 position = Vector2( -1, -10 )
 frames = SubResource( 17 )
 animation = "Walk"
-frame = 6
 frame = 6
 playing = true
 offset = Vector2( 0, -58 )

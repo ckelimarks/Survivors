@@ -17,9 +17,6 @@ func _ready():
 	sprite_node.connect("animation_finished", self, "_on_animation_finished")
 	# No need to connect signals if we're using physics for collision avoidance
 
-func thing():
-	print("!")
-
 func _physics_process(delta):
 	distance_to_hero = global_position.distance_to(Hero.global_position)
 	var gap_vector = Hero.global_position - global_position
