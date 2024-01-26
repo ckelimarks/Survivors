@@ -38,7 +38,8 @@ void fragment() {
 	// Tile the texture
 	COLOR = texture(ground_texture, mod(uv, 1.0));
 	// Fade out with distance from the center
-	//float dist = distance(uv * vec2(1.1, 1.1), vec2(0.0, 0.0));
-	//COLOR *= vec4(1.0, 1.0, 1.0, 1.0 - 0.75 * pow(dist, 0.5));
+	uv.y *= 3.0;
+	float dist = distance(uv * vec2(0.5, 0.5), vec2(0.0, 0.0));
+	COLOR *= vec4(1.0, 1.0, 1.0, 1.0 - 0.75 * pow(dist, 0.5));
 }
 "

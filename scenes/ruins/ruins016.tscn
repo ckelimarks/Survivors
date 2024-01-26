@@ -9,7 +9,7 @@ z_as_relative = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -270.34, 343.43 )
 scale = Vector2( 31.892, 10.4775 )
-polygon = PoolVector2Array( 16.7429, -35.7576, 9.72121, -43.3546, 0.712256, -34.3833, 7.76451, -26.2768, 15.9081, -32.3006 )
+polygon = PoolVector2Array( 16.692, -35.0685, 9.72121, -43.3546, 0.712256, -34.3833, 7.76451, -26.2768, 15.9081, -32.3006 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 15.9995, -126.5 )

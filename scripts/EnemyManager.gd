@@ -3,8 +3,7 @@ extends Node2D
 # Get a reference to the camera node
 onready var camera_node = get_node("/root/Main/Camera")
 var enemy_scene = preload("res://scenes/Enemy.tscn")
-var max_enemies = 200
-var active_enemies = 0
+var max_enemies = 100
 var enemies = []
 
 func spawn_enemy(view):
@@ -14,13 +13,13 @@ func spawn_enemy(view):
 	var position = Vector2(0,0)
 	var seg = int(rand_range(0, 4))
 	if seg == 0:
-		position = Vector2(vpos.x + rand_range(-2,-1)*vsiz.x, vpos.y + rand_range(-1,1)*vsiz.y)
+		position = Vector2(vpos.x + rand_range(-2,-1)*vsiz.x, vpos.y + rand_range(-1, 1)*vsiz.y)
 	elif seg == 1:
-		position = Vector2(vpos.x + rand_range(1,2)*vsiz.x, vpos.y + rand_range(-1,1)*vsiz.y)
+		position = Vector2(vpos.x + rand_range( 1, 2)*vsiz.x, vpos.y + rand_range(-1, 1)*vsiz.y)
 	elif seg == 2:
-		position = Vector2(vpos.x + rand_range(-1,1)*vsiz.x, vpos.y + rand_range(-2,-1)*vsiz.y)
+		position = Vector2(vpos.x + rand_range(-1, 1)*vsiz.x, vpos.y + rand_range(-2,-1)*vsiz.y)
 	elif seg == 3:
-		position = Vector2(vpos.x + rand_range(-1,1)*vsiz.x, vpos.y + rand_range(1,2)*vsiz.y)
+		position = Vector2(vpos.x + rand_range(-1, 1)*vsiz.x, vpos.y + rand_range( 1, 2)*vsiz.y)
 
 	# Set the enemy's position and add it to the scene
 	enemy_instance.global_position = position
@@ -38,5 +37,5 @@ func spawn_enemy(view):
 func _process(delta):
 	# Define the maximum view rectangle considering the camera's position
 	var view_rect = Rect2(camera_node.global_position, get_viewport_rect().size)
-	if active_enemies < max_enemies && randf() < .1: #5e-3:
+	if enemies.size() < max_enemies && randf() < .1: #5e-3:
 		spawn_enemy(view_rect)

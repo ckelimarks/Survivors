@@ -3,6 +3,7 @@ extends KinematicBody2D
 var speed = 75  # Adjust as needed
 var pushing_strength = 10
 var HP = 3 # hit points
+var power = 1
 var distance_to_hero = -1
 
 onready var camera_node = get_node("/root/Main/Camera")
@@ -16,6 +17,8 @@ func _ready():
 	sprite_node.connect("animation_finished", self, "_on_animation_finished")
 	# No need to connect signals if we're using physics for collision avoidance
 
+func thing():
+	print("!")
 
 func _physics_process(delta):
 	distance_to_hero = global_position.distance_to(Hero.global_position)
@@ -33,28 +36,24 @@ func _physics_process(delta):
 	var collision = move_and_collide(direction * speed * delta)
 
 	if collision:
-		if true or collision.collider.is_in_group("pushable"):  # Check if the collider can be pushed
-			#print(weapon_nodes)
-			if weapon_nodes.has(collision.collider): 
-				HP -= collision.collider.power
-				recoil = (Hero.global_position - global_position).normalized() * 100
-				glow()
-				if HP <= 0:
-					EnemyManager.enemies.erase(self)
-					killsound.play()
-					speed = 0
-					sprite_node.play("Dead")
-					# remove from collision layers
-					set_collision_layer_bit(0, false)
-					set_collision_mask_bit(0, false)
-					set_collision_layer_bit(1, false)
-					set_collision_mask_bit(1, false)
-					set_collision_layer_bit(2, false)
-					set_collision_mask_bit(2, false)
+		if weapon_nodes.has(collision.collider): 
+			HP -= collision.collider.power
+			recoil = (Hero.global_position - global_position).normalized() * 100
+			glow()
+			if HP <= 0:
+				EnemyManager.enemies.erase(self)
+				killsound.play()
+				speed = 0
+				sprite_node.play("Dead")
+				# remove from collision layers
+				set_collision_layer_bit(0, false)
+				set_collision_mask_bit(0, false)
+				set_collision_layer_bit(1, false)
+				set_collision_mask_bit(1, false)
 
-				
-			# Attempt to push the collider by manually adjusting the enemy's global_position
-			push_vector = collision.remainder.normalized() * pushing_strength * delta
+			
+		# Attempt to push the collider by manually adjusting the enemy's global_position
+		push_vector = collision.remainder.normalized() * pushing_strength * delta
 	
 	var new_position = global_position + push_vector - recoil
 	var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position, 0.1)
@@ -74,8 +73,8 @@ func glow():
 	
 func _on_animation_finished():
 	if sprite_node.get_animation() == "Dead":
-		self.queue_free()
 		var gem_instance = exp_gem_scene.instance()
 		gem_instance.global_position = global_position
 		EnemyManager.add_child(gem_instance)
-		#respawn enemey somewhere else
+		EnemyManager.enemies.erase(self)
+		self.queue_free()
