@@ -3,3 +3,6 @@
 .mono/
 sounds/.DS_Store
 .DS_Store
+*.png~
+
+herowalk/
