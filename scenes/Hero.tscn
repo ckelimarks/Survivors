@@ -23,6 +23,7 @@ z_as_relative = false
 [node name="Sprite" type="Sprite" parent="Smoother"]
 scale = Vector2( 0.6, 0.6 )
 z_as_relative = false
+z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="HealthNode" type="Node2D" parent="Smoother"]
@@ -35,6 +36,7 @@ margin_right = 103.0
 margin_bottom = 14.0
 step = 1.0
 value = 100.0
+rounded = true
 rounded = true
 
 [node name="OrbOrigin" type="Node2D" parent="Smoother"]

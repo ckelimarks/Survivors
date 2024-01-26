@@ -9,6 +9,7 @@ onready var smooth_node = $Smoother
 onready var healthbar_node = $Smoother/HealthNode/HeroHealth
 onready var camera_node = get_node("/root/Main/Camera")
 onready var main_node = get_node("/root/Main")
+onready var main_node = get_node("/root/Main")
 
 var sprite_offset = Vector2()
 
