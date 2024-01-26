@@ -2,19 +2,18 @@ extends KinematicBody2D
 
 var speed = 200
 var pushing_strength = 300  # Adjust the pushing effect as needed
-
+var HP = 100.0
+var max_HP = 100.0
 
 onready var sprite_node = $Sprite
-onready var weapon_node = $Weapon1
+onready var healthbar_node = $HeroHealth
 onready var camera_node = get_node("/root/Main/Camera")
-
-
+onready var main_node = get_node("/root/Main")
 
 var sprite_offset = Vector2()
 
 
 func _ready():
-	
 	sprite_offset = sprite_node.position
 	
 
@@ -40,13 +39,19 @@ func _physics_process(delta):
 	# First, try to move normally.
 	var collision = move_and_collide(velocity.normalized() * speed * delta)
 	if collision:
-		if true or collision.collider.is_in_group("pushable"):  # Check if the collider can be pushed
-			# Attempt to push the collider by manually adjusting the hero's global_position
-			var push_vector = collision.remainder.normalized() * pushing_strength * delta
-			var new_position = global_position + push_vector
-			var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position + sprite_offset, 0.1)
-			global_position = new_position
-			sprite_node.position = smoothed_position - new_position
+		if collision.collider.is_in_group("enemies"):  # Check if the collider can be pushed
+			HP -= collision.collider.power
+			healthbar_node.value = HP / max_HP * 100
+			if HP <= 0:
+				main_node.reset()
+				return
+			
+		# Attempt to push the collider by manually adjusting the hero's global_position
+		var push_vector = collision.remainder.normalized() * pushing_strength * delta
+		var new_position = global_position + push_vector
+		var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position + sprite_offset, 0.1)
+		global_position = new_position
+		sprite_node.position = smoothed_position - new_position
 	
 	self.z_index = int(global_position.y - camera_node.global_position.y)
 	

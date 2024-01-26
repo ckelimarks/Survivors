@@ -3,6 +3,7 @@ extends KinematicBody2D
 var speed = 75  # Adjust as needed
 var pushing_strength = 10
 var HP = 3 # hit points
+var power = 1
 var distance_to_hero = -1
 
 onready var camera_node = get_node("/root/Main/Camera")
@@ -74,8 +75,8 @@ func glow():
 	
 func _on_animation_finished():
 	if sprite_node.get_animation() == "Dead":
-		self.queue_free()
 		var gem_instance = exp_gem_scene.instance()
 		gem_instance.global_position = global_position
 		EnemyManager.add_child(gem_instance)
-		#respawn enemey somewhere else
+		EnemyManager.enemies.erase(self)
+		self.queue_free()
