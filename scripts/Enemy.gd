@@ -28,7 +28,10 @@ func _physics_process(delta):
 	var sprite_start_position = sprite_node.position  # Save the current position before moving
 	
 	if HP > 0:
-		sprite_node.flip_h = gap_vector.x < 0
+		gap_vector * Vector2(1, 2) #de-isometricify before using the angle
+		var angle = int(atan(gap_vector) / (2*PI) * 8)
+		var anim_name = "blah" + str(angle)
+		#set it
 	
 	# First, try to move normally.	
 	var push_vector = Vector2(0,0)
@@ -60,8 +63,7 @@ func _physics_process(delta):
 	global_position = new_position
 	sprite_node.position = smoothed_position - new_position	
 			
-	#print ([global_position.y, camera_node.global_position.y])		
-	self.z_index = int(global_position.y - camera_node.global_position.y)
+	self.z_index = int(smoothed_position.y - camera_node.global_position.y)
 
 
 var exp_gem_scene = preload("res://scenes/ExpGem.tscn")

@@ -68,7 +68,8 @@ func _physics_process(delta):
 	# First, try to move normally.
 	
 	var collision = move_and_collide(velocity.normalized() * speed * delta * ISO)
-
+	var push_vector = Vector2.ZERO
+	
 	sprite_node.modulate = Color(1, 1, 1, 1)
 	
 	if collision:
@@ -82,11 +83,12 @@ func _physics_process(delta):
 				return
 			
 		# Attempt to push the collider by manually adjusting the hero's global_position
-		var push_vector = collision.remainder.normalized() * pushing_strength * delta
-		var new_position = global_position + push_vector
-		var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position + sprite_offset, 0.1)
-		global_position = global_position + (new_position - global_position) * ISO 
-		smooth_node.position = smoothed_position - new_position
+		push_vector = collision.remainder.normalized() * pushing_strength * delta
 	
-	self.z_index = int(global_position.y - camera_node.global_position.y)
+	var new_position = global_position + push_vector
+	var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position + sprite_offset, 0.1)
+	global_position = global_position + (new_position - global_position) * ISO 
+	smooth_node.position = smoothed_position - new_position
+	
+	self.z_index = int(smoothed_position.y - camera_node.global_position.y)
 	
