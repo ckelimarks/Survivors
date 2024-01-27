@@ -17,6 +17,8 @@ polygon = PoolVector2Array( -45, -3.003, 0, -45.045, 46, -3.003, 1, 42.042 )
 
 [node name="Stan" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -80 )
+frame = 25
+playing = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 visible = false

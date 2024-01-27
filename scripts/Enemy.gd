@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var speed = 75  # Adjust as needed
-var pushing_strength = 10
+var pushing_strength = 5
 var HP = 3 # hit points
 var power = 1
 var distance_to_hero = -1
@@ -29,9 +29,9 @@ func _physics_process(delta):
 	
 	if HP > 0:
 		gap_vector * Vector2(1, 2) #de-isometricify before using the angle
-		var angle = int(atan(gap_vector) / (2*PI) * 8)
-		var anim_name = "blah" + str(angle)
-		#set it
+#		var angle = int(atan(gap_vector) / (2*PI) * 8)
+#		var anim_name = "blah" + str(angle)
+#		#set it
 	
 	# First, try to move normally.	
 	var push_vector = Vector2(0,0)

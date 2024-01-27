@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 500
+var speed = 300
 var pushing_strength = 300  # Adjust the pushing effect as needed
 var HP = 100.0
 var max_HP = 100.0
@@ -29,9 +29,11 @@ func _physics_process(delta):
 	var up = Input.is_action_pressed('ui_up')
 	var down = Input.is_action_pressed('ui_down')
 	# Get input from the player
-	
-	if Input.is_action_pressed('ui_accept'):
-		get_tree().paused = true
+	#sprite_node.play("idle")
+	#if Input.is_action_pressed('punch'):
+		#sprite_node.play("punch")
+		#get_tree().paused = true
+		
 	if right and down:
 		velocity += Vector2(speed, speed).normalized()
 		sprite_node.play("walk_se")
@@ -57,13 +59,15 @@ func _physics_process(delta):
 		velocity.y -= 1
 		sprite_node.play("walk_n")
 	
+   
 	if velocity.length() > 0 and !$WalkingSound.playing:
 		#print("moving")
 		$WalkingSound.play()
 	elif velocity.length() == 0 and $WalkingSound.playing:
 		#print("stopped")
 		#$WalkingSound.stop()
-		sprite_node.stop()
+		sprite_node.play("idle")
+		$WalkingSound.stop()
 	# Move the player
 	# First, try to move normally.
 	
@@ -79,7 +83,11 @@ func _physics_process(delta):
 			sprite_node.modulate = Color(1, 0, 0, 1)
 			healthbar_node.value = HP / max_HP * 100
 			if HP <= 0:
+				#healthbar_node.value = max_HP
 				main_node.reset()
+				#get_tree().paused = true
+				#sprite_node.play("death")
+				
 				return
 			
 		# Attempt to push the collider by manually adjusting the hero's global_position
@@ -91,4 +99,9 @@ func _physics_process(delta):
 	smooth_node.position = smoothed_position - new_position
 	
 	self.z_index = int(smoothed_position.y - camera_node.global_position.y)
+	
+
+
+func _on_Stan_animation_finished():
+	sprite_node.play("idle")
 	

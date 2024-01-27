@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ESCAPE.mp3-6a8d52995a8a0b47506cfec05c8f4fd8.mp3str"
+
+[deps]
+
+source_file="res://sounds/ESCAPE.mp3"
+dest_files=[ "res://.import/ESCAPE.mp3-6a8d52995a8a0b47506cfec05c8f4fd8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

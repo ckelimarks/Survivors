@@ -1,0 +1,40 @@
+extends CanvasLayer
+
+onready var healthbar_node = $Hero/Smoother/HealthNode/HeroHealth
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Button2_pressed():
+	Hero.speed = Hero.speed + 100
+	$MarginContainer.hide()
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	get_tree().paused = false
+	#pass # Replace with function body.
+
+
+func _on_Button1_pressed():
+	Hero.pushing_strength = Hero.pushing_strength + 300
+	$MarginContainer.hide()
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	get_tree().paused = false
+	
+
+
+func _on_Button3_pressed():
+	Hero.max_HP = Hero.max_HP + 50
+	$MarginContainer.hide()
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	get_tree().paused = false
+	pass # Replace with function body.

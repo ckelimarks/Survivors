@@ -1,7 +1,7 @@
 extends Node2D
 
-var power = 5
-var cooldown = 2
+var power = 200
+var cooldown = 1
 var heat = 0
 
 func _ready():
