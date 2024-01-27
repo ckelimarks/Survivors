@@ -11,12 +11,16 @@ onready var sprite_node = $Smoother/Stan
 onready var healthbar_node = $Smoother/HealthNode/HeroHealth
 onready var camera_node = get_node("/root/Main/Camera")
 onready var main_node = get_node("/root/Main")
+onready var xp_bar = get_node("/root/Main/UICanvas/xpBar")
+onready var you_died = get_node("/root/Main/UICanvas/youdied")
+
 #onready var walking_sound =
 
 var sprite_offset = Vector2()
 
 func _ready():
 	sprite_offset = smooth_node.position
+
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -84,7 +88,12 @@ func _physics_process(delta):
 			healthbar_node.value = HP / max_HP * 100
 			if HP <= 0:
 				#healthbar_node.value = max_HP
-				main_node.reset()
+				you_died.show()
+				AudioServer.set_bus_effect_enabled(0, 0, true)
+				get_tree().paused = true
+				#main_node.reset()
+				xp_bar.value = 0
+				
 				#get_tree().paused = true
 				#sprite_node.play("death")
 				
@@ -103,5 +112,6 @@ func _physics_process(delta):
 
 
 func _on_Stan_animation_finished():
-	sprite_node.play("idle")
+	pass
+	#sprite_node.play("idle")
 	
