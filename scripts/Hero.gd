@@ -22,6 +22,7 @@ var sprite_offset = Vector2()
 
 func _ready():
 	sprite_offset = smooth_node.position
+	sprite_node.play("idle")
 
 	
 
