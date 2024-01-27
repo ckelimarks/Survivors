@@ -2,6 +2,7 @@ extends CanvasLayer
 
 onready var healthbar_node = $Hero/Smoother/HealthNode/HeroHealth
 onready var main_node = get_node("/root/Main")
+onready var music_node = get_node("/root/Main/Music")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -46,3 +47,4 @@ func _on_restartbutton_pressed():
 	get_tree().paused = false
 	AudioServer.set_bus_effect_enabled(0, 0, false)
 	main_node.reset()
+	music_node.play()

@@ -13,6 +13,8 @@ onready var camera_node = get_node("/root/Main/Camera")
 onready var main_node = get_node("/root/Main")
 onready var xp_bar = get_node("/root/Main/UICanvas/xpBar")
 onready var you_died = get_node("/root/Main/UICanvas/youdied")
+onready var game_over = get_node("/root/Main/GameOverSound")
+onready var music = get_node("/root/Main/Music")
 
 #onready var walking_sound =
 
@@ -87,15 +89,13 @@ func _physics_process(delta):
 			sprite_node.modulate = Color(1, 0, 0, 1)
 			healthbar_node.value = HP / max_HP * 100
 			if HP <= 0:
-				#healthbar_node.value = max_HP
+				music.stop()
+				game_over.play()
 				you_died.show()
 				AudioServer.set_bus_effect_enabled(0, 0, true)
 				get_tree().paused = true
 				#main_node.reset()
 				xp_bar.value = 0
-				
-				#get_tree().paused = true
-				#sprite_node.play("death")
 				
 				return
 			
