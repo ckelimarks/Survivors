@@ -1,20 +1,23 @@
 extends KinematicBody2D
 
 var speed = 75  # Adjust as needed
-var pushing_strength = 10
+var pushing_strength = 5
 var HP = 3 # hit points
 var power = 1
 var distance_to_hero = -1
+var enemy_color = Color(.9, .8, 1, 1)
 
 onready var camera_node = get_node("/root/Main/Camera")
-onready var sprite_node = $AnimatedSprite
-onready var glow_sprite = sprite_node.get_node("Sprite")
+onready var blue_orb = get_node("/root/Main/WeaponManager/BlueOrbEmitter")
+onready var sprite_node = $Stan
+#onready var glow_sprite = sprite_node.get_node("Stan")
 onready var killsound = $AudioStreamPlayer2D
 onready var weapon_nodes = get_node("/root/Main/WeaponManager").weapons
 #onready var weapon_node2 = Hero.get_node("/root/Main/Hero/BlueOrb")
 
 func _ready():
 	sprite_node.connect("animation_finished", self, "_on_animation_finished")
+	modulate = enemy_color
 	# No need to connect signals if we're using physics for collision avoidance
 
 func _physics_process(delta):
@@ -25,7 +28,26 @@ func _physics_process(delta):
 	var sprite_start_position = sprite_node.position  # Save the current position before moving
 	
 	if HP > 0:
-		sprite_node.flip_h = gap_vector.x < 0
+		gap_vector * Vector2(1, 2) #de-isometricify before using the angle
+		
+		var angle = atan2(gap_vector.y, gap_vector.x)
+		var angle_dir = int(angle / (PI / 4)) % 8
+		if angle_dir == 0:
+			$Stan.play("walk_e")
+		elif angle_dir == 1:
+			$Stan.play("walk_se")
+		elif angle_dir == 2:
+			$Stan.play("walk_s")
+		elif angle_dir == 3:
+			$Stan.play("walk_sw")
+		elif angle_dir == 4:
+			$Stan.play("walk_w")
+		elif angle_dir == 5:
+			$Stan.play("walk_nw")
+		elif angle_dir == 6:
+			$Stan.play("walk_n")
+		else:  # angle_dir == 7
+			$Stan.play("walk_ne")
 	
 	# First, try to move normally.	
 	var push_vector = Vector2(0,0)
@@ -33,7 +55,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(direction * speed * delta)
 
 	if collision:
-		if weapon_nodes.has(collision.collider): 
+		if weapon_nodes.has(collision.collider):
 			HP -= collision.collider.power
 			recoil = (Hero.global_position - global_position).normalized() * 100
 			glow()
@@ -41,7 +63,7 @@ func _physics_process(delta):
 				EnemyManager.enemies.erase(self)
 				killsound.play()
 				speed = 0
-				sprite_node.play("Dead")
+				sprite_node.play("dead")
 				# remove from collision layers
 				set_collision_layer_bit(0, false)
 				set_collision_mask_bit(0, false)
@@ -57,19 +79,20 @@ func _physics_process(delta):
 	global_position = new_position
 	sprite_node.position = smoothed_position - new_position	
 			
-			
-	self.z_index = int(global_position.y - camera_node.global_position.y)
+	self.z_index = int(smoothed_position.y - camera_node.global_position.y)
 
 
 var exp_gem_scene = preload("res://scenes/ExpGem.tscn")
 
 func glow():
-	glow_sprite.visible = true
+#	glow_sprite.visible = true
+	modulate = Color(1, 0, 0, 1)
 	yield(get_tree().create_timer(0.2), "timeout")
-	glow_sprite.visible = false
+	modulate = enemy_color
+	#glow_sprite.visible = false
 	
 func _on_animation_finished():
-	if sprite_node.get_animation() == "Dead":
+	if sprite_node.get_animation() == "dead":
 		var gem_instance = exp_gem_scene.instance()
 		gem_instance.global_position = global_position
 		EnemyManager.add_child(gem_instance)

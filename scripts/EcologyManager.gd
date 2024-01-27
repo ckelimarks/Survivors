@@ -26,7 +26,7 @@ var ruins = []
 
 func _ready():
 	# Create 1000 ruin objects with random positions and types
-	for r in range(500):
+	for r in range(0):
 		var ruin_object = {
 			"position": Vector2(rand_range(-10000, 10000), rand_range(-10000, 10000)),
 			"type": randi() % ruin_scenes.size(),

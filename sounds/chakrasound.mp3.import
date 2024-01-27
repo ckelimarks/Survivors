@@ -11,5 +11,5 @@ dest_files=[ "res://.import/chakrasound.mp3-b76a7b8ad04963e2a8ab38e4f98ec44b.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

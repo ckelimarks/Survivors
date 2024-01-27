@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hpDownSound.mp3-726c52d0cc0b9ba753b777bbf20d694d.mp3str"
+
+[deps]
+
+source_file="res://sounds/hpDownSound.mp3"
+dest_files=[ "res://.import/hpDownSound.mp3-726c52d0cc0b9ba753b777bbf20d694d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

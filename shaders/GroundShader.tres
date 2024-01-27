@@ -8,7 +8,7 @@ uniform vec2 camera_pos; // Uniform for the camera position
 uniform vec2 window_size; // The size of the window
 //uniform vec2 hero_pos; // Uniform for the character position
 uniform vec2 texture_size; // The actual pixel size of the texture
-const bool isometricify = false; // 'true' to make topdown textures isometric
+const bool isometricify = true; // 'true' to make topdown textures isometric
 
 void fragment() {
 	// Convert camera position to UV offset
@@ -24,7 +24,7 @@ void fragment() {
 	vec2 uv = (frag / texture_size) - uv_offset;
 	if (isometricify == true) {
 		// Apply the isometric transformation
-		uv.y *= 3.0;
+		uv.y *= 2.0;
 		float angle = 3.1415926 / 4.0; // 45 degrees in radians
 		float cos_angle = cos(angle);
 		float sin_angle = sin(angle);

@@ -3,7 +3,7 @@ extends Node2D
 # Get a reference to the camera node
 onready var camera_node = get_node("/root/Main/Camera")
 var enemy_scene = preload("res://scenes/Enemy.tscn")
-var max_enemies = 100
+var max_enemies = 50
 var enemies = []
 
 func spawn_enemy(view):
