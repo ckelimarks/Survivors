@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=2]
+[gd_scene load_steps=213 format=2]
 
 [ext_resource path="res://scripts/Hero.gd" type="Script" id=1]
 [ext_resource path="res://robot/se/0002.png" type="Texture" id=2]
@@ -254,6 +254,9 @@ animations = [ {
 "speed": 26.0
 } ]
 
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.758086, 0.280476, 0.280476, 1 )
+
 [node name="HeroBody" type="KinematicBody2D"]
 z_as_relative = false
 script = ExtResource( 1 )
@@ -276,7 +279,8 @@ scale = Vector2( 0.368519, 0.368519 )
 z_as_relative = false
 frames = SubResource( 1 )
 animation = "walk_n"
-frame = 4
+frame = 5
+speed_scale = 1.5
 playing = true
 
 [node name="HealthNode" type="Node2D" parent="Smoother"]
@@ -287,6 +291,7 @@ z_as_relative = false
 [node name="HeroHealth" type="ProgressBar" parent="Smoother/HealthNode"]
 margin_right = 103.0
 margin_bottom = 14.0
+custom_styles/fg = SubResource( 2 )
 step = 1.0
 value = 100.0
 rounded = true
