@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/BlueOrb.gd" type="Script" id=1]
 [ext_resource path="res://sprites/electricorb.png" type="Texture" id=2]
-[ext_resource path="res://sounds/chakrasound.mp3" type="AudioStream" id=14]
+[ext_resource path="res://sounds/orbSound.mp3" type="AudioStream" id=3]
 
 [sub_resource type="AtlasTexture" id=49]
 flags = 4
@@ -151,9 +151,13 @@ modulate = Color( 1, 1, 1, 0.627451 )
 position = Vector2( -1, -9.53674e-07 )
 scale = Vector2( 0.708333, 0.697599 )
 frames = SubResource( 48 )
+speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 38 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 14 )
+[node name="BlueOrbAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -80.0
+
+[connection signal="body_entered" from="." to="." method="_on_BlueOrb_body_entered"]

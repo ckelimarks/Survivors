@@ -18,3 +18,12 @@ func _on_finished(name: String):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	global_position += Vector2(speed * dir * delta)
+
+
+func _on_BlueOrb_body_entered(body):
+	if body.name == "EnemyBody":
+		#greenslime.dead(50)
+		EnemyManager.enemies.erase(self)
+	#else:
+		#queue_free()
+	

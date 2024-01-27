@@ -1,6 +1,6 @@
 extends Node2D
 
-var power = 1
+var power = 5
 var cooldown = 2
 var heat = 0
 
