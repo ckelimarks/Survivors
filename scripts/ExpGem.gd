@@ -3,6 +3,7 @@ extends Area2D
 onready var camera_node = get_node("/root/Main/Camera") # make autoload/global var
 var recoil = Vector2.ZERO
 var touched = false
+onready var focusbutton = get_node("/root/Main/UICanvas/MarginContainer/VBoxContainer/Button1")
 
 var audio_samples := [
 	preload("res://sounds/gemsounds/v2/gemsound1.mp3"),
@@ -35,10 +36,11 @@ func _on_body_entered(body):
 		$AudioStreamPlayer.connect("finished", self, "_on_audio_finished")
 		xpBar.value = xpBar.value + 10
 		
-	if xpBar.value == 100:
+	if xpBar.value == 10:
 		
 		get_tree().paused = true
 		levelUp.show()
+		focusbutton.grab_focus()
 		
 		#AudioServer.add_bus_effect(1, AudioEffectLowPassFilter.new(), 0)
 		#AudioServer.cutoff_hz = 400.0

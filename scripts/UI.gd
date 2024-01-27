@@ -10,6 +10,7 @@ onready var music_node = get_node("/root/Main/Music")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 
@@ -43,6 +44,7 @@ func _on_Button3_pressed():
 
 
 func _on_restartbutton_pressed():
+
 	$youdied.hide()
 	get_tree().paused = false
 	AudioServer.set_bus_effect_enabled(0, 0, false)

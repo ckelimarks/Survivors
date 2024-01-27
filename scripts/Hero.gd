@@ -15,6 +15,7 @@ onready var xp_bar = get_node("/root/Main/UICanvas/xpBar")
 onready var you_died = get_node("/root/Main/UICanvas/youdied")
 onready var game_over = get_node("/root/Main/GameOverSound")
 onready var music = get_node("/root/Main/Music")
+onready var focusbutton = get_node("/root/Main/UICanvas/MarginContainer/VBoxContainer/Button1")
 
 #onready var walking_sound =
 
@@ -95,6 +96,8 @@ func _physics_process(delta):
 				you_died.show()
 				AudioServer.set_bus_effect_enabled(0, 0, true)
 				get_tree().paused = true
+				
+				focusbutton.grab_focus()
 				#main_node.reset()
 				xp_bar.value = 0
 				
