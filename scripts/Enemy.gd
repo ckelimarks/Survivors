@@ -29,9 +29,25 @@ func _physics_process(delta):
 	
 	if HP > 0:
 		gap_vector * Vector2(1, 2) #de-isometricify before using the angle
-#		var angle = int(atan(gap_vector) / (2*PI) * 8)
-#		var anim_name = "blah" + str(angle)
-#		#set it
+		
+		var angle = atan2(gap_vector.y, gap_vector.x)
+		var angle_dir = int(angle / (PI / 4)) % 8
+		if angle_dir == 0:
+			$Stan.play("walk_e")
+		elif angle_dir == 1:
+			$Stan.play("walk_se")
+		elif angle_dir == 2:
+			$Stan.play("walk_s")
+		elif angle_dir == 3:
+			$Stan.play("walk_sw")
+		elif angle_dir == 4:
+			$Stan.play("walk_w")
+		elif angle_dir == 5:
+			$Stan.play("walk_nw")
+		elif angle_dir == 6:
+			$Stan.play("walk_n")
+		else:  # angle_dir == 7
+			$Stan.play("walk_ne")
 	
 	# First, try to move normally.	
 	var push_vector = Vector2(0,0)
