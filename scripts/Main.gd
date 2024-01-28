@@ -19,6 +19,6 @@ func reset():
 	
 	# reset/respawn Hero
 	Hero.HP = Hero.max_HP
-	Hero.get_node("Smoother/HealthNode/HeroHealth").value = 100
-	Hero.get_node("Smoother").position = Hero.sprite_offset
+	Hero.healthbar_node.value = 100
+	Hero.smooth_node.position = Hero.sprite_offset
 	Hero.global_position = Vector2.ZERO

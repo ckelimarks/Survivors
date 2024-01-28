@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/ground2.jpeg-cb9670c988b7ea3913d38e7fd5e7107c.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://images/ground/ground2.jpeg"
+dest_files=[ "res://.import/ground2.jpeg-cb9670c988b7ea3913d38e7fd5e7107c.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

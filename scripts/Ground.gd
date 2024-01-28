@@ -4,7 +4,7 @@ var ground_texture_size = Vector2() # Replace with your ground texture's actual 
 
 func _ready():
 	update_mesh_size()
-	var ground_texture = preload("res://sprites/ground.jpg")
+	var ground_texture = preload("res://images/ground/ground.jpg")
 	ground_texture_size = ground_texture.get_size() * Vector2(.75,.75)
 	update_shader_params()
 

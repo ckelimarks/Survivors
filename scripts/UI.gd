@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var healthbar_node = $Hero/Smoother/HealthNode/HeroHealth
+onready var healthbar_node = $Hero/PositionSmoother/HealthNode/HeroHealth
 onready var main_node = get_node("/root/Main")
 onready var music_node = get_node("/root/Main/Music")
 # Declare member variables here. Examples:
@@ -10,7 +10,6 @@ onready var music_node = get_node("/root/Main/Music")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	pass # Replace with function body.
 
 
@@ -21,6 +20,7 @@ func _ready():
 
 func _on_Button2_pressed():
 	Hero.speed = Hero.speed + 100
+	Hero.sprite_node.speed_scale = Hero.speed / 300
 	$MarginContainer.hide()
 	AudioServer.set_bus_effect_enabled(0, 0, false)
 	get_tree().paused = false
@@ -37,6 +37,8 @@ func _on_Button1_pressed():
 
 func _on_Button3_pressed():
 	Hero.max_HP = Hero.max_HP + 50
+	Hero.HP = min(Hero.HP + 50, Hero.max_HP)
+	# lets make the hp bar HP instead of % of maxHP
 	$MarginContainer.hide()
 	AudioServer.set_bus_effect_enabled(0, 0, false)
 	get_tree().paused = false
