@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://sprites/XpGem.png" type="Texture" id=1]
+[ext_resource path="res://images/gem/XpGem.png" type="Texture" id=1]
 [ext_resource path="res://scripts/ExpGem.gd" type="Script" id=2]
 [ext_resource path="res://sounds/gemsounds/gemsound1.mp3" type="AudioStream" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11, 14.5 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.0
 
 [node name="ExperienceGem" type="Area2D"]
 script = ExtResource( 2 )

@@ -27,14 +27,14 @@ func _on_body_entered(body):
 			gem_captured()
 			return
 			
-		recoil = 500
+		recoil = 1000
 		touched = true
 
 		var random_note_index = randi() % audio_samples.size()
 		$AudioStreamPlayer.set_stream(audio_samples[random_note_index])
 		$AudioStreamPlayer.play()
 		$AudioStreamPlayer.connect("finished", self, "_on_audio_finished")
-		xpBar.value = xpBar.value + 10
+		xpBar.value = xpBar.value + 1
 		
 	if xpBar.value == 10:
 		
@@ -53,9 +53,10 @@ func _on_body_entered(body):
 		
 func gem_captured():
 	$Sprite.visible = false
+	queue_free()
 	
 func _on_audio_finished():
-	queue_free()
+	pass
 	
 func _process(delta):
 	if touched:

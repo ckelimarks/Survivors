@@ -20,7 +20,7 @@ func _physics_process(delta):
 func spawn_orb():
 	var blue_orb_projectile = blue_orb_scene.instance()
 	blue_orb_projectile.z_index = 4096
-	blue_orb_projectile.global_position = Hero.get_node("Smoother/OrbOrigin").global_position 
+	blue_orb_projectile.global_position = Hero.get_node("PositionSmoother/OrbOrigin").global_position 
 	add_child(blue_orb_projectile)
 	weapon_nodes.append(blue_orb_projectile)
 

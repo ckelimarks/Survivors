@@ -11,15 +11,17 @@ collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -0.0048099, -0.16595 )
-scale = Vector2( 1.00962, 0.222478 )
-polygon = PoolVector2Array( -45, -3.003, 0, -45.045, 46, -3.003, 1, 42.042 )
-
-[node name="Stan" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -80 )
-frame = 13
+scale = Vector2( 0.7, 0.7 )
+polygon = PoolVector2Array( -100, 0, 0, -50, 100, 0, 0, 50 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource( 3 )
 volume_db = -80.0
+
+[node name="PositionSmoother" type="Node2D" parent="."]
+
+[node name="Stan" parent="PositionSmoother" instance=ExtResource( 2 )]
+position = Vector2( 0, -80 )
+scale = Vector2( 0.3, 0.3 )
+frame = 18

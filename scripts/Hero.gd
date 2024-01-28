@@ -1,14 +1,15 @@
 extends KinematicBody2D
 
-var speed = 300
-var pushing_strength = 300  # Adjust the pushing effect as needed
+var speed = 300.0
+var pushing_strength = 300.0  # Adjust the pushing effect as needed
 var HP = 100.0
 var max_HP = 100.0
-var ISO = Vector2(1, .5)
+var ISO = Vector2(1, .5)  # isometric coordinate transform
+var unISO = Vector2(1, 2) # undo isometric coordinate transform
 
-onready var smooth_node = $Smoother
-onready var sprite_node = $Smoother/Stan
-onready var healthbar_node = $Smoother/HealthNode/HeroHealth
+onready var smooth_node = $PositionSmoother
+onready var sprite_node = $PositionSmoother/Stan
+onready var healthbar_node = $PositionSmoother/HealthNode/HeroHealth
 onready var camera_node = get_node("/root/Main/Camera")
 onready var main_node = get_node("/root/Main")
 onready var xp_bar = get_node("/root/Main/UICanvas/xpBar")
@@ -24,6 +25,7 @@ var sprite_offset = Vector2()
 func _ready():
 	sprite_offset = smooth_node.position
 	sprite_node.play("idle")
+	sprite_node.speed_scale = speed / 300.0
 
 	
 
@@ -67,7 +69,7 @@ func _physics_process(delta):
 		velocity.y -= 1
 		sprite_node.play("walk_n")
 	
-   
+
 	if velocity.length() > 0 and !$WalkingSound.playing:
 		#print("moving")
 		$WalkingSound.play()
@@ -86,7 +88,7 @@ func _physics_process(delta):
 	
 	if collision:
 		$ImpactSound.play()
-		if collision.collider.is_in_group("enemies"):  # Check if the collider can be pushed
+		if collision.collider.is_in_group("enemies"):
 			HP -= collision.collider.power
 			sprite_node.modulate = Color(1, 0, 0, 1)
 			healthbar_node.value = HP / max_HP * 100
@@ -107,7 +109,7 @@ func _physics_process(delta):
 		push_vector = collision.remainder.normalized() * pushing_strength * delta
 	
 	var new_position = global_position + push_vector
-	var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position + sprite_offset, 0.1)
+	var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position + sprite_offset, 0.3)
 	global_position = global_position + (new_position - global_position) * ISO 
 	smooth_node.position = smoothed_position - new_position
 	
