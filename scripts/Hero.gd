@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var speed = 300.0
 var pushing_strength = 300.0  # Adjust the pushing effect as needed
-var HP = 100.0
+var HP = 10.0
 var max_HP = 100.0
 var ISO = Vector2(1, .5)  # isometric coordinate transform
 var unISO = Vector2(1, 2) # undo isometric coordinate transform
@@ -26,8 +26,7 @@ func _ready():
 	sprite_offset = smooth_node.position
 	sprite_node.play("idle")
 	sprite_node.speed_scale = speed / 300.0
-	$PositionSmoother/Stan.connect("animation_finished", self, "on_animation_finished") 
-	
+	sprite_node.connect("animation_finished", self, "_on_animation_finished") 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -108,17 +107,17 @@ func _physics_process(delta):
 	
 
 
-func on_animation_finished(anime_name):
-	print(anime_name)
-#	if anim_name == "dead":
-#		music.stop()
-#		game_over.play()
-#		you_died.show()
-#		AudioServer.set_bus_effect_enabled(0, 0, true)
-#		get_tree().paused = true
-#		focusbutton.grab_focus()
-#		#main_node.reset()
-#		xp_bar.value = 0
-#		return
-	#sprite_node.play("idle")
-	
+func _on_Stan_animation_finished():
+	print("animation is finished")
+	print(sprite_node.animation)
+	if sprite_node.animation == "dead":
+		print("dead animation")
+		music.stop()
+		game_over.play()
+		you_died.show()
+		AudioServer.set_bus_effect_enabled(0, 0, true)
+		get_tree().paused = true
+		focusbutton.grab_focus()
+		#main_node.reset()
+		xp_bar.value = 0
+		return
