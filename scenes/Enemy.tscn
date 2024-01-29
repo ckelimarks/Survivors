@@ -24,10 +24,10 @@ volume_db = -80.0
 
 [node name="Mike" parent="PositionSmoother" instance=ExtResource( 4 )]
 scale = Vector2( 0.3, 0.3 )
-animation = "walk_s"
+frame = 1
 
 [node name="Stan" parent="PositionSmoother" instance=ExtResource( 2 )]
 visible = false
 position = Vector2( 0, -24 )
 scale = Vector2( 0.3, 0.3 )
-frame = 38
+frame = 51

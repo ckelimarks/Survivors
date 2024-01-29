@@ -25,7 +25,7 @@ scale = Vector2( 1, 0.5 )
 [node name="Stan" parent="PositionSmoother" instance=ExtResource( 2 )]
 scale = Vector2( 0.3, 0.3 )
 animation = "walk_s"
-frame = 4
+frame = 0
 
 [node name="HealthNode" type="Node2D" parent="PositionSmoother"]
 position = Vector2( -50, 0 )

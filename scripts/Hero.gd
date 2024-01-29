@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var speed = 300.0
 var pushing_strength = 300.0  # Adjust the pushing effect as needed
-var HP = 10.0
+var HP = 100.0
 var max_HP = 100.0
 var ISO = Vector2(1, .5)  # isometric coordinate transform
 var unISO = Vector2(1, 2) # undo isometric coordinate transform
@@ -42,43 +42,43 @@ func _physics_process(delta):
 	#if Input.is_action_pressed('punch'):
 		#sprite_node.play("punch")
 		#get_tree().paused = true
+	if sprite_node.animation != "dead":		
+		if right and down:
+			velocity += Vector2(speed, speed).normalized()
+			sprite_node.play("walk_se")
+		elif down and left:
+			velocity -= Vector2(speed, -speed).normalized()
+			sprite_node.play("walk_sw")
+		elif left and up:
+			velocity -= Vector2(speed, speed).normalized()
+			sprite_node.play("walk_nw")
+		elif up and right:
+			velocity += Vector2(speed, -speed).normalized()
+			sprite_node.play("walk_ne")
+		elif right:
+			velocity.x += 1
+			sprite_node.play("walk_e")
+		elif down:
+			velocity.y += 1
+			sprite_node.play("walk_s")
+		elif left:
+			velocity.x -= 1
+			sprite_node.play("walk_w")
+		elif up:
+			velocity.y -= 1
+			sprite_node.play("walk_n")
 		
-	if right and down:
-		velocity += Vector2(speed, speed).normalized()
-		sprite_node.play("walk_se")
-	elif down and left:
-		velocity -= Vector2(speed, -speed).normalized()
-		sprite_node.play("walk_sw")
-	elif left and up:
-		velocity -= Vector2(speed, speed).normalized()
-		sprite_node.play("walk_nw")
-	elif up and right:
-		velocity += Vector2(speed, -speed).normalized()
-		sprite_node.play("walk_ne")
-	elif right:
-		velocity.x += 1
-		sprite_node.play("walk_e")
-	elif down:
-		velocity.y += 1
-		sprite_node.play("walk_s")
-	elif left:
-		velocity.x -= 1
-		sprite_node.play("walk_w")
-	elif up:
-		velocity.y -= 1
-		sprite_node.play("walk_n")
-	
 
-	if velocity.length() > 0 and !$WalkingSound.playing:
-		#print("moving")
-		$WalkingSound.play()
-	elif velocity.length() == 0 and $WalkingSound.playing:
-		#print("stopped")
-		#$WalkingSound.stop()
-		sprite_node.play("idle")
-		$WalkingSound.stop()
-	# Move the player
-	# First, try to move normally.
+		if velocity.length() > 0 and !$WalkingSound.playing:
+			#print("moving")
+			$WalkingSound.play()
+		elif velocity.length() == 0 and $WalkingSound.playing:
+			#print("stopped")
+			#$WalkingSound.stop()
+			sprite_node.play("idle")
+			$WalkingSound.stop()
+		# Move the player
+		# First, try to move normally.
 	
 	var collision = move_and_collide(velocity.normalized() * speed * delta * ISO)
 	var push_vector = Vector2.ZERO
@@ -108,10 +108,8 @@ func _physics_process(delta):
 
 
 func _on_Stan_animation_finished():
-	print("animation is finished")
-	print(sprite_node.animation)
+
 	if sprite_node.animation == "dead":
-		print("dead animation")
 		music.stop()
 		game_over.play()
 		you_died.show()
@@ -120,4 +118,5 @@ func _on_Stan_animation_finished():
 		focusbutton.grab_focus()
 		#main_node.reset()
 		xp_bar.value = 0
+
 		return
