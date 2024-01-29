@@ -1,6 +1,6 @@
 extends Node2D
 
-var cooldown = 3
+var cooldown = 200
 var heat = 0
 
 onready var weapon_nodes = get_node("/root/Main/WeaponManager").weapons

@@ -3,7 +3,7 @@ extends KinematicBody2D
 var speed = 200.0  # Adjust as needed
 var pushing_strength = 5
 var HP = 3 # hit points
-var power = 1
+var power = 200
 var distance_to_hero = -1
 var enemy_color = Color(.9, .8, 1, 1)
 var ISO = Vector2(1, .5)  # isometric coordinate transform
@@ -14,7 +14,7 @@ var sprite_offset = Vector2()
 onready var camera_node = get_node("/root/Main/Camera")
 onready var blue_orb = get_node("/root/Main/WeaponManager/BlueOrbEmitter")
 onready var smooth_node = $PositionSmoother
-onready var sprite_node = $PositionSmoother/Stan
+onready var sprite_node = $PositionSmoother/Mike
 onready var killsound = $AudioStreamPlayer2D
 onready var weapon_nodes = get_node("/root/Main/WeaponManager").weapons
 
