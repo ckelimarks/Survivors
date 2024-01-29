@@ -26,7 +26,7 @@ func _ready():
 	sprite_offset = smooth_node.position
 	sprite_node.play("idle")
 	sprite_node.speed_scale = speed / 300.0
-
+	$PositionSmoother/Stan.connect("animation_finished", self, "on_animation_finished") 
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -93,17 +93,8 @@ func _physics_process(delta):
 			sprite_node.modulate = Color(1, 0, 0, 1)
 			healthbar_node.value = HP / max_HP * 100
 			if HP <= 0:
-				music.stop()
-				game_over.play()
-				you_died.show()
-				AudioServer.set_bus_effect_enabled(0, 0, true)
-				get_tree().paused = true
+				sprite_node.play("dead")
 				
-				focusbutton.grab_focus()
-				#main_node.reset()
-				xp_bar.value = 0
-				
-				return
 			
 		# Attempt to push the collider by manually adjusting the hero's global_position
 		push_vector = collision.remainder.normalized() * pushing_strength * delta
@@ -117,7 +108,17 @@ func _physics_process(delta):
 	
 
 
-func _on_Stan_animation_finished():
-	pass
+func on_animation_finished(anime_name):
+	print(anime_name)
+#	if anim_name == "dead":
+#		music.stop()
+#		game_over.play()
+#		you_died.show()
+#		AudioServer.set_bus_effect_enabled(0, 0, true)
+#		get_tree().paused = true
+#		focusbutton.grab_focus()
+#		#main_node.reset()
+#		xp_bar.value = 0
+#		return
 	#sprite_node.play("idle")
 	

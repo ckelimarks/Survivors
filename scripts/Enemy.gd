@@ -14,7 +14,7 @@ var sprite_offset = Vector2()
 onready var camera_node = get_node("/root/Main/Camera")
 onready var blue_orb = get_node("/root/Main/WeaponManager/BlueOrbEmitter")
 onready var smooth_node = $PositionSmoother
-onready var sprite_node = $PositionSmoother/Stan
+onready var sprite_node = $PositionSmoother/Mike
 onready var killsound = $AudioStreamPlayer2D
 onready var weapon_nodes = get_node("/root/Main/WeaponManager").weapons
 

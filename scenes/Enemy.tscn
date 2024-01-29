@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/robots/Stan.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sounds/killsound2.mp3" type="AudioStream" id=3]
+[ext_resource path="res://scenes/robots/Mike.tscn" type="PackedScene" id=4]
 
 [node name="EnemyBody" type="KinematicBody2D" groups=["enemies"]]
 z_as_relative = false
@@ -21,7 +22,12 @@ volume_db = -80.0
 
 [node name="PositionSmoother" type="Node2D" parent="."]
 
-[node name="Stan" parent="PositionSmoother" instance=ExtResource( 2 )]
-position = Vector2( 0, -80 )
+[node name="Mike" parent="PositionSmoother" instance=ExtResource( 4 )]
 scale = Vector2( 0.3, 0.3 )
-frame = 18
+animation = "walk_s"
+
+[node name="Stan" parent="PositionSmoother" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 0, -24 )
+scale = Vector2( 0.3, 0.3 )
+frame = 38
