@@ -1,6 +1,5 @@
 extends Area2D
 
-onready var camera_node = get_node("/root/Main/Camera") # make autoload/global var
 var recoil = Vector2.ZERO
 var touched = false
 onready var focusbutton = get_node("/root/Main/UICanvas/MarginContainer/VBoxContainer/Button1")
@@ -69,4 +68,4 @@ func _process(delta):
 		$Sprite.position = smoothed_position - new_position
 		recoil -= 10
 		
-	self.z_index = int(global_position.y - camera_node.global_position.y)
+	self.z_index = int(global_position.y - Cam.global_position.y)

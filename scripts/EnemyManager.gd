@@ -1,7 +1,6 @@
 extends Node2D
 
 # Get a reference to the camera node
-onready var camera_node = get_node("/root/Main/Camera")
 var enemy_scene = preload("res://scenes/Enemy.tscn")
 var max_enemies = 10
 var enemy_spawn_cooldown = 1
@@ -41,7 +40,7 @@ func spawn_enemy(view):
 
 func _process(delta):
 	# Define the maximum view rectangle considering the camera's position
-	var view_rect = Rect2(camera_node.global_position, get_viewport_rect().size)
+	var view_rect = Rect2(Cam.global_position, get_viewport_rect().size)
 	enemy_spawn_heat -= delta
 	if enemies.size() < max_enemies && enemy_spawn_heat <= 0:
 		spawn_enemy(view_rect)

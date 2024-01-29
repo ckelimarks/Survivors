@@ -19,13 +19,12 @@ func update_mesh_size():
 		mesh.size = screen_size*1.5
 
 func update_shader_params():
-	var camera = get_node("/root/Main/Camera")
-	var camera_pos = camera.get_camera_screen_center()
+	var camera_pos = Cam.get_camera_screen_center()
 
 	# Adjust the position if the camera has smoothing or drag margins
-	var drag_margin_h = camera.get_drag_margin(MARGIN_LEFT) + camera.get_drag_margin(MARGIN_RIGHT)
-	var drag_margin_v = camera.get_drag_margin(MARGIN_TOP) + camera.get_drag_margin(MARGIN_BOTTOM)
-	camera_pos += camera.get_offset() * Vector2(drag_margin_h, drag_margin_v)
+	var drag_margin_h = Cam.get_drag_margin(MARGIN_LEFT) + Cam.get_drag_margin(MARGIN_RIGHT)
+	var drag_margin_v = Cam.get_drag_margin(MARGIN_TOP) + Cam.get_drag_margin(MARGIN_BOTTOM)
+	camera_pos += Cam.get_offset() * Vector2(drag_margin_h, drag_margin_v)
 
 	# Update shader parameters
 	material.set_shader_param("camera_pos", camera_pos)

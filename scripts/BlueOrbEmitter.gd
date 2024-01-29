@@ -3,7 +3,7 @@ extends Node2D
 var cooldown = 3
 var heat = 0
 
-onready var weapon_nodes = get_node("/root/Main/WeaponManager").weapons
+onready var weapons = WeaponManager.weapons
 var blue_orb_scene = preload("res://scenes/weapons/BlueOrb.tscn")
 
 func _ready():
@@ -22,7 +22,7 @@ func spawn_orb():
 	blue_orb_projectile.z_index = 4096
 	blue_orb_projectile.global_position = Hero.get_node("PositionSmoother/OrbOrigin").global_position 
 	add_child(blue_orb_projectile)
-	weapon_nodes.append(blue_orb_projectile)
+	weapons.append(blue_orb_projectile)
 
 	var orb_audio = blue_orb_projectile.get_node("BlueOrbAudio")
 	if orb_audio:

@@ -1,8 +1,5 @@
 extends Node2D
 
-# Get a reference to the camera node
-onready var camera_node = get_node("/root/Main/Camera")
-
 # Preload the ruin scenes for later instantiation
 var ruin_scenes = [
 	preload("res://scenes/ruins/ruins005.tscn"),
@@ -40,7 +37,7 @@ func _ready():
 func _process(delta):
 	# Define the maximum view rectangle considering the camera's position
 	var view_size = get_viewport_rect().size
-	var view_rect_max = Rect2(camera_node.global_position - view_size, view_size * Vector2(3, 3))
+	var view_rect_max = Rect2(Cam.global_position - view_size, view_size * Vector2(3, 3))
 
 	# Check each ruin to see if it's within the view rectangle
 	for ruin in ruins:
@@ -60,4 +57,4 @@ func _process(delta):
 
 		# Adjust the z_index of active ruins based on their y position relative to the camera
 		if ruin_visible and ruin.active:
-			ruin.instance.z_index = int(ruin.instance.global_position.y - camera_node.global_position.y)
+			ruin.instance.z_index = int(ruin.instance.global_position.y - Cam.global_position.y)
