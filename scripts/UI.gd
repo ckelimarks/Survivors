@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var healthbar_node = $Hero/PositionSmoother/HealthNode/HeroHealth
+#onready var healthbar_node = Hero.HeroHealth
 onready var main_node = get_node("/root/Main")
 onready var music_node = get_node("/root/Main/Music")
 # Declare member variables here. Examples:

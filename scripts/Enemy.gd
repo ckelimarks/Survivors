@@ -11,12 +11,11 @@ var unISO = Vector2(1, 2) # undo isometric coordinate transform
 
 var sprite_offset = Vector2()
 
-onready var camera_node = get_node("/root/Main/Camera")
-onready var blue_orb = get_node("/root/Main/WeaponManager/BlueOrbEmitter")
+onready var blue_orb = WeaponManager.BlueOrbEmitter
 onready var smooth_node = $PositionSmoother
 onready var sprite_node = $PositionSmoother/Stan
 onready var killsound = $AudioStreamPlayer2D
-onready var weapon_nodes = get_node("/root/Main/WeaponManager").weapons
+onready var weapons = WeaponManager.weapons
 
 func _ready():
 	sprite_node.connect("animation_finished", self, "_on_animation_finished")
@@ -44,7 +43,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(direction * speed * delta)
 
 	if collision:
-		if weapon_nodes.has(collision.collider):
+		if weapons.has(collision.collider):
 			HP -= collision.collider.power
 			recoil = (Hero.global_position - global_position).normalized() * 100
 			glow()
@@ -68,7 +67,7 @@ func _physics_process(delta):
 	global_position = global_position + (new_position - global_position) * ISO 
 	smooth_node.position = smoothed_position - new_position	
 		
-	self.z_index = int(smoothed_position.y - camera_node.global_position.y)
+	self.z_index = int(smoothed_position.y - Cam.global_position.y)
 
 var exp_gem_scene = preload("res://scenes/ExpGem.tscn")
 

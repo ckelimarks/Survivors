@@ -9,8 +9,9 @@ var unISO = Vector2(1, 2) # undo isometric coordinate transform
 
 onready var smooth_node = $PositionSmoother
 onready var sprite_node = $PositionSmoother/Stan
-onready var healthbar_node = $PositionSmoother/HealthNode/HeroHealth
-onready var camera_node = get_node("/root/Main/Camera")
+onready var Yantra = $PositionSmoother/Yantra
+onready var HeroHealth = $PositionSmoother/HealthNode/HeroHealth
+
 onready var main_node = get_node("/root/Main")
 onready var xp_bar = get_node("/root/Main/UICanvas/xpBar")
 onready var you_died = get_node("/root/Main/UICanvas/youdied")
@@ -91,7 +92,7 @@ func _physics_process(delta):
 		if collision.collider.is_in_group("enemies"):
 			HP -= collision.collider.power
 			sprite_node.modulate = Color(1, 0, 0, 1)
-			healthbar_node.value = HP / max_HP * 100
+			HeroHealth.value = HP / max_HP * 100
 			if HP <= 0:
 				music.stop()
 				game_over.play()
@@ -113,7 +114,7 @@ func _physics_process(delta):
 	global_position = global_position + (new_position - global_position) * ISO 
 	smooth_node.position = smoothed_position - new_position
 	
-	self.z_index = int(smoothed_position.y - camera_node.global_position.y)
+	self.z_index = int(smoothed_position.y - Cam.global_position.y)
 	
 
 

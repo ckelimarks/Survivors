@@ -1,7 +1,8 @@
 extends Node
 
-var weapons = [Hero.get_node("PositionSmoother/Yantra")]
-var blue_orb_weapon = [Hero.get_node("PositionSmoother/Blue Orb")]
+var weapons = [Hero.Yantra]
+#var blue_orb_weapon = [Hero.BlueOrb]
+onready var BlueOrbEmitter = $BlueOrbEmitter
 
 func _ready():
 	pass # Replace with function body.
