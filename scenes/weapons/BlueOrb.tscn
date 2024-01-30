@@ -137,24 +137,19 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[sub_resource type="CircleShape2D" id=38]
-radius = 66.0076
+[sub_resource type="CylinderShape" id=74]
 
-[node name="BlueOrb" type="Area2D"]
-z_as_relative = false
+[node name="BlueOrb" type="Area"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
 modulate = Color( 1, 1, 1, 0.627451 )
-position = Vector2( -1, -9.53674e-07 )
-scale = Vector2( 0.708333, 0.697599 )
 frames = SubResource( 48 )
-speed_scale = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 38 )
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 74 )
 
 [node name="BlueOrbAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

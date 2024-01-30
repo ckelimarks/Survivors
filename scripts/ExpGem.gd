@@ -1,6 +1,6 @@
-extends Area2D
+extends Area
 
-var recoil = Vector2.ZERO
+var recoil = Vector3.ZERO
 var touched = false
 onready var focusbutton = get_node("/root/Main/UICanvas/MarginContainer/VBoxContainer/Button1")
 
@@ -59,13 +59,13 @@ func _on_audio_finished():
 	
 func _process(delta):
 	if touched:
-		var start_position = global_position
-		var force = (Hero.global_position - global_position).normalized() * recoil * delta
-		var new_position = global_position - force
+		var start_position = global_translation
+		var force = (Hero.global_translation - global_translation).normalized() * recoil * delta
+		var new_position = global_translation - force
 		var sprite_start_position = $Sprite.position  # Save the current position before moving
 		var smoothed_position = (start_position + sprite_start_position).linear_interpolate(new_position, 0.1)
-		global_position = new_position
+		global_translation = new_position
 		$Sprite.position = smoothed_position - new_position
 		recoil -= 10
 		
-	self.z_index = int(global_position.y - Cam.global_position.y)
+	self.z_index = int(global_translation.y - Cam.global_translation.y)

@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var cooldown = 3
 var heat = 0
@@ -19,8 +19,8 @@ func _physics_process(delta):
 
 func spawn_orb():
 	var blue_orb_projectile = blue_orb_scene.instance()
-	blue_orb_projectile.z_index = 4096
-	blue_orb_projectile.global_position = Hero.get_node("PositionSmoother/OrbOrigin").global_position 
+	#blue_orb_projectile.z_index = 4096
+	blue_orb_projectile.global_translation = Hero.OrbOrigin.global_translation 
 	add_child(blue_orb_projectile)
 	weapons.append(blue_orb_projectile)
 

@@ -5,8 +5,7 @@
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sounds/gameover.mp3" type="AudioStream" id=9]
 
-[node name="Main" type="Node2D"]
-z_as_relative = false
+[node name="Main" type="Spatial"]
 script = ExtResource( 6 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
